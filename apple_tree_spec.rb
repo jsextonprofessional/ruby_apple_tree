@@ -42,18 +42,26 @@ RSpec.describe AppleTree do
         expect{ @tree1.apple_count = 1 }.to raise_error(NoMethodError)
     end
 
-    # it 'Apple Tree should have a method called year_gone_by' do
-    #     expect{ @tree1.age }.to eq(0)
-    # end
+    context 'Apple Tree should have a method called year_gone_by' do
+        it 'age should increase by 1' do
+            expect(@tree2.age).to eq(3)
+        end
 
-    context 'while Apple Tree is under 3 years old' do
+        it 'height should increase by 10 percent' do
+            expect(@tree1.height).to eq(1)
+        end
+    end
+
+    context 'apple_count increases depending on stage' do
         it 'Apple Tree should not grow apples for the first 3 years' do
             expect(@tree1.apple_count).to eq(0)
             expect(@tree2.apple_count).to eq(2)
         end
-    end
 
-    context 'while Apple Tree is over 10 years old' do
+        it 'Apple Tree should grow apples between 4 and 10 years' do
+            expect(@tree2.apple_count).to eq(2)
+        end
+
         it 'Apple Tree should not grow apples if older than 10 years' do
             expect(@tree3.apple_count).to eq(16)
         end
